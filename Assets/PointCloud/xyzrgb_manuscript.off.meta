@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 456ad5b5e9dfba24bbdbb3a429ab6232
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 19811
+  packageName: Point Cloud Free Viewer
+  packageVersion: 0.2
+  assetPath: Assets/PointCloud/xyzrgb_manuscript.off
+  uploadId: 8920
