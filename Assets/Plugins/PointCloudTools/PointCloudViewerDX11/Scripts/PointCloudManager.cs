@@ -410,14 +410,14 @@ namespace PointCloudViewer
         // checks if give AABB box collides with any point (point is inside the given box)
         public bool BoundsIntersectsCloud(Bounds box)
         {
-            //PointCloudHelpers.PointCloudTools.DrawBounds(box);
-
             // check all clouds
             for (int cloudIndex = 0, length2 = clouds.Count; cloudIndex < length2; cloudIndex++)
             {
+
                 // exit if outside whole cloud bounds
                 if (clouds[cloudIndex].bounds.Contains(box.center) == false) return false;
-
+                //PointCloudTools.DrawBounds(clouds[cloudIndex].bounds, Color.green);
+                
                 // get full cloud bounds
                 float minX = clouds[cloudIndex].bounds.min.x;
                 float minY = clouds[cloudIndex].bounds.min.y;
@@ -442,11 +442,13 @@ namespace PointCloudViewer
                 int colliderY = (int)((box.center.y - minY) * stepYInverted);
                 int colliderZ = (int)((box.center.z - minZ) * stepZInverted);
                 var BoxIndex = colliderX + slices * (colliderY + slices * colliderZ);
-                //PointCloudHelpers.PointCloudTools.DrawBounds(clouds[cloudIndex].nodes[BoxIndex].bounds);
+                //  PointCloudTools.DrawBounds(clouds[cloudIndex].nodes[BoxIndex].bounds, Color.red);
 
                 // check if we hit within that area
-                for (int j = 0, l = clouds[cloudIndex].nodes[BoxIndex].points.Count; j < l; j++)
+                for (int j = 0; j < clouds[cloudIndex].nodes[BoxIndex].points.Count; j++)
                 {
+                    // PointCloudTools.DrawBounds(clouds[cloudIndex].bounds, Color.red);
+                    // Debug.Log(j + " " + clouds[cloudIndex].bounds);
                     // each point
                     int pointIndex = clouds[cloudIndex].nodes[BoxIndex].points[j];
                     Vector3 p = viewers[clouds[cloudIndex].viewerIndex].points[pointIndex];

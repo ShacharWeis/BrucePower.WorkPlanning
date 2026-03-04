@@ -14,6 +14,7 @@ using System;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 using pointcloudviewer.tools;
+using UnityEngine.Events;
 
 namespace pointcloudviewer.binaryviewer
 {
@@ -23,7 +24,7 @@ namespace pointcloudviewer.binaryviewer
         [Header("Binary Source File")]
         [Tooltip("Note: New v2 format uses .ucpc extension")]
         public string fileName = "StreamingAssets/PointCloudViewerSampleData/sample.bin";
-
+        public UnityEvent Ready;
         [Header("Settings")]
         public bool loadAtStart = true;
         public Material cloudMaterial;
@@ -1084,7 +1085,10 @@ namespace pointcloudviewer.binaryviewer
             isLoading = false;
             isReady = true;
             Debug.Log("Finished loading.");
+            Ready.Invoke();
+            
         }
+
 
         // -------------------------- POINT CLOUD HELPER METHODS --------------------------------
         // returns current point count, or -1 if points array is null

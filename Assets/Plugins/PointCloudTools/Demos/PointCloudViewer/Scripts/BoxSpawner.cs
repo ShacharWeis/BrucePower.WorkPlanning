@@ -21,7 +21,7 @@ namespace pointcloudviewer.examples
                 var rb = Instantiate(prefab, cam.transform.position, Quaternion.identity) as Rigidbody;
                 var ray = cam.ScreenPointToRay(Input.mousePosition);
                 rb.AddForce(ray.direction * 20, ForceMode.Impulse);
-                Destroy(rb.gameObject, 3);
+                //Destroy(rb.gameObject, 3);
             }
         }
     }
